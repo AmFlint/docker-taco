@@ -1,0 +1,62 @@
+version: "3"
+
+services:
+  taco_api:
+    image: node:alpine
+    container_name: taco_api
+    expose:
+      - "80"
+    ports:
+      - "8000:80"
+    volumes:
+      - ./data/api:/usr/taco/api
+    working_dir: /usr/taco/api
+    command: npm run start
+    networks:
+      - taco_network
+
+  taco_application:
+    image: node:alpine
+    container_name: taco_application
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data/application:/usr/taco/application
+    working_dir: /usr/taco/application
+    command: npm run start
+    networks:
+      - taco_network
+
+  taco_database:
+    image: mysql
+    container_name: taco_db
+    environment:
+      MYSQL_ROOT_PASSWORD: taco
+      MYSQL_DATABASE: taco
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: devroot
+    ports:
+      - "3306:3306"
+    volumes:
+      - taco-data:/var/lib/mysql
+    networks:
+      - taco_network
+  
+  taco_phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: taco_phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      MYSQL_USERNAME: root
+      MYSQL_ROOT_PASSWORD: taco
+      PMA_HOST: taco_database
+    networks:
+      - taco_network
+
+networks:
+  taco_network:
+volumes:
+  taco-data:

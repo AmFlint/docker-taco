@@ -1,1 +1,2 @@
-# docker-taco
+# Docker repository for taco team
+
