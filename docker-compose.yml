@@ -7,7 +7,7 @@ services:
     expose:
       - "80"
     ports:
-      - "8000:80"
+      - "8000:8000"
     volumes:
       - ./data/api:/usr/taco/api
     working_dir: /usr/taco/api
