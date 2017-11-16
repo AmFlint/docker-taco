@@ -34,6 +34,15 @@ Pour accéder aux services:
   - phpmyadmin [http://localhost:8080](http://localhost:8080)
   - MySQL disponible sur le port 3306
 
+Credentials for phpmyadmin:
+  - username: root
+  - password: taco
+
+Credentials for MySQL Database:
+  - database name: taco
+  - username: root
+  - password: taco
+
 ***Notez*** que vous devrez ouvrir les dossier présents dans `./data` dans vos éditeurs de texte, après chaque modifications, les serveurs seront redémarrés pour prendre en charge les modifications.
 
 ### Eteindre les services :
