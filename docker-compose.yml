@@ -55,5 +55,4 @@ services:
 networks:
   taco_network:
 volumes:
-  taco-data:
   taco-mongo:
