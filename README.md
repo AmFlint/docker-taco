@@ -31,17 +31,13 @@ Les serveurs front, back vont se lancer en même temps que la base de donnée my
 Pour accéder aux services:
   - Front [http://localhost:3000](http://localhost:3000)
   - API [http://localhost:8000](http://localhost:8000)
-  - phpmyadmin [http://localhost:8080](http://localhost:8080)
-  - MySQL disponible sur le port 3306
+  - Interface Administration MongoDB [http://localhost:8080](http://localhost:8080)
+  - MongoDB disponible sur le port 27017
 
-Credentials for phpmyadmin:
-  - username: root
-  - password: taco
-
-Credentials for MySQL Database:
+Credentials for MongoDB Database:
   - database name: taco
-  - username: root
-  - password: taco
+  - username: admin
+  - password: pass
 
 ***Notez*** que vous devrez ouvrir les dossier présents dans `./data` dans vos éditeurs de texte, après chaque modifications, les serveurs seront redémarrés pour prendre en charge les modifications.
 
