@@ -28,35 +28,32 @@ services:
     command: npm run start
     networks:
       - taco_network
-
-  taco_database:
-    image: mysql
-    container_name: taco_db
-    environment:
-      MYSQL_ROOT_PASSWORD: taco
-      MYSQL_DATABASE: taco
-      MYSQL_USER: dev
-      MYSQL_PASSWORD: devroot
-    ports:
-      - "3306:3306"
-    volumes:
-      - taco-data:/var/lib/mysql
-    networks:
-      - taco_network
   
-  taco_phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: taco_phpmyadmin
+  taco_mongo:
+    image: mongo:3.2
+    container_name: taco_mongo
+    volumes:
+      - taco-mongo:/data/db
     ports:
-      - "8080:80"
+      - "27017:27017"
+    networks: 
+      - taco_network
+
+  taco_db_interface:
+    image: mongo-express
+    container_name: taco_db_interface
+    ports:
+      - "8080:8081"
     environment:
-      MYSQL_USERNAME: root
-      MYSQL_ROOT_PASSWORD: taco
-      PMA_HOST: taco_database
-    networks:
+      ME_CONFIG_MONGODB_AUTH_DATABASE: taco
+      ME_CONFIG_MONGODB_AUTH_USERNAME: admin
+      ME_CONFIG_MONGODB_AUTH_PASSWORD: pass
+      ME_CONFIG_MONGODB_SERVER: taco_mongo
+    networks: 
       - taco_network
 
 networks:
   taco_network:
 volumes:
   taco-data:
+  taco-mongo:
