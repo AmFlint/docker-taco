@@ -1,14 +1,32 @@
 version: "3"
 
 services:
-  taco_meteor:
-    build: ./application
-    container_name: taco_meteor
+  taco_api:
+    image: node:alpine
+    container_name: taco_api
+    expose:
+      - "80"
     ports:
-      - "8000:3000"
+      - "8000:8000"
+    volumes:
+      - ./data/api:/usr/taco/api
+    working_dir: /usr/taco/api
+    command: npm run start
+    networks:
+      - taco_network
+
+  taco_application:
+    image: node:alpine
+    container_name: taco_application
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
     volumes:
       - ./data/application:/usr/taco/application
-    networks: 
+    working_dir: /usr/taco/application
+    command: npm run start
+    networks:
       - taco_network
   
   taco_mongo:

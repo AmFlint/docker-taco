@@ -6,13 +6,14 @@
 
 ***
 
-Ensuite, téléchargez le repo de l'application meteor dans le dossier `data` avec la commande ci-dessous :
+Ensuite, téléchargez les repo front et back dans le dossier `data` avec la commande ci-dessous :
 
 ```bash
-git clone https://github.com/AmFlint/taco-application.git ./data/application
+git clone https://github.com/AmFlint/taco-api.git ./data/api
+git clone https://github.com/Yoreln/taco-application.git ./data/application
 ```
 
-Une fois le projet installé, vous devrez installer les dépendances dans le dossier
+Une fois les deux projets installés, vous devrez installer les dépendances dans chacun des dossiers 
 
 ```bash
 npm install
@@ -28,7 +29,8 @@ docker-compose up
 Les serveurs front, back vont se lancer en même temps que la base de donnée mysql et phpmyadmin.
 
 Pour accéder aux services:
-  - Application [http://localhost:3000](http://localhost:3000)
+  - Front [http://localhost:3000](http://localhost:3000)
+  - API [http://localhost:8000](http://localhost:8000)
   - Interface Administration MongoDB [http://localhost:8080](http://localhost:8080)
   - MongoDB disponible sur le port 27017
 
@@ -46,4 +48,3 @@ docker-compose down
 ```
 
 ***Notez*** que les données stockées dans la base de donnée seront persistées et seront sauvegardées en local après l'extinction des services.
-
