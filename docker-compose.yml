@@ -5,13 +5,13 @@ services:
     build: ./data/api
     container_name: taco_api
     expose:
-      - "8000"
+      - "80"
     ports:
       - "80:80"
     volumes:
       - ./data/api:/usr/taco/api
     working_dir: /usr/taco/api
-    command: npm run start
+    command: npm run dev
     environment:
       - DNS=localhost
       - PORT=80
