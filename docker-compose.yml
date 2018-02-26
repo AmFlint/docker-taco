@@ -29,7 +29,7 @@ services:
     volumes:
       - ./data/application:/usr/taco/application
     working_dir: /usr/taco/application
-    command: npm run start
+    command: npm run dev
     networks:
       - taco_frontend
     deploy:
